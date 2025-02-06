@@ -22,15 +22,15 @@ class DisciplinaController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
-                'data' => $disciplinas
+                'message' => 'Lista de disciplinas',
+                'data'    => $disciplinas
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as disciplinas.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -52,15 +52,15 @@ class DisciplinaController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Dados da disciplina',
                 'data'    => $disciplina
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar a disciplina.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -80,16 +80,12 @@ class DisciplinaController extends BaseController
 
             $disciplina = DisciplinaModel::create($dados);
 
-            if (!$disciplina) {
-                throw new Exception();
-            }
-
             DB::commit();
 
             return response()->json([
                 'success' => true,
                 'message' => 'Disciplina cadastrada com sucesso!',
-                'data' => $disciplina
+                'data'    => $disciplina
             ], 201);
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -97,8 +93,8 @@ class DisciplinaController extends BaseController
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao cadastrar a disciplina.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -125,14 +121,14 @@ class DisciplinaController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Disciplina editada com sucesso!',
-                'data' => $disciplina
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao editar a disciplina.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -159,14 +155,14 @@ class DisciplinaController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Disciplina inativada com sucesso!',
-                'data' => $disciplina
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao inativar a disciplina.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -194,14 +190,14 @@ class DisciplinaController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Disciplina reativada com sucesso!',
-                'data' => $disciplina
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao reativar a disciplina.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -232,8 +228,8 @@ class DisciplinaController extends BaseController
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as atividades da disciplina.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -300,7 +296,7 @@ class DisciplinaController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as médias dessa disciplina.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -340,7 +336,7 @@ class DisciplinaController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar o ranking dos alunos.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 }

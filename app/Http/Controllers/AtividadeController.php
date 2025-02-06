@@ -23,7 +23,7 @@ class AtividadeController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Lista de atividades',
                 'data' => $atividades
             ], 200);
         } catch (\Throwable $th) {
@@ -31,7 +31,7 @@ class AtividadeController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as atividades.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -53,7 +53,7 @@ class AtividadeController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Dados da atividade',
                 'data'    => $atividade
             ], 200);
         } catch (\Throwable $th) {
@@ -94,10 +94,6 @@ class AtividadeController extends BaseController
 
             $atividade = AtividadeModel::create($dados);
 
-            if (!$atividade) {
-                throw new Exception();
-            }
-
             DB::commit();
 
             return response()->json([
@@ -112,7 +108,7 @@ class AtividadeController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao cadastrar a atividade.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -156,14 +152,14 @@ class AtividadeController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Atividade editada com sucesso!',
-                'data' => $atividade
+                'data'    => ''
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao editar a atividade.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -190,14 +186,14 @@ class AtividadeController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Atividade inativada com sucesso!',
-                'data' => $atividade
+                'data'    => ''
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao inativar a atividade.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -225,14 +221,14 @@ class AtividadeController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Atividade reativada com sucesso!',
-                'data' => $atividade
+                'data'    => ''
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao reativar a atividade.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -261,14 +257,14 @@ class AtividadeController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Atividade finalizada com sucesso!',
-                'data' => $atividade
+                'data'    => ''
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao finalizar a atividade.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -278,6 +274,7 @@ class AtividadeController extends BaseController
         try {
             DB::beginTransaction();
 
+            // Valida os dados
             $request->validate([
                 'uuid_atividade' => 'required',
                 'uuid_aluno'     => 'required',
@@ -358,7 +355,7 @@ class AtividadeController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Nota atribuida com sucesso!',
-                'data' => ''
+                'data'    => ''
             ], 201);
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -367,7 +364,7 @@ class AtividadeController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao atribuir a nota.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 }

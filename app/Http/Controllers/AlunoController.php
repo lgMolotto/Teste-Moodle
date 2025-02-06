@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AlunoRequest;
 use App\Models\AlunoModel;
 use App\Models\AtividadeModel;
-use App\Models\DisciplinaModel;
 use App\Models\MatriculaModel;
 use Exception;
 use Illuminate\Http\Request;
@@ -22,7 +21,7 @@ class AlunoController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Lista de alunos',
                 'data'    => $alunos
             ], 200);
         } catch (\Throwable $th) {
@@ -30,7 +29,7 @@ class AlunoController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar os alunos.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -52,7 +51,7 @@ class AlunoController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Dados do aluno',
                 'data'    => $aluno
             ], 200);
         } catch (\Throwable $th) {
@@ -60,7 +59,7 @@ class AlunoController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar o aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -71,10 +70,6 @@ class AlunoController extends BaseController
             DB::beginTransaction();
 
             $aluno = AlunoModel::create($request->validated());
-
-            if (!$aluno) {
-                throw new Exception();
-            }
 
             DB::commit();
 
@@ -90,7 +85,7 @@ class AlunoController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao cadastrar o aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -117,14 +112,14 @@ class AlunoController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Aluno editado com sucesso!',
-                'data'    => $aluno
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao editar o aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -151,14 +146,14 @@ class AlunoController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Aluno inativado com sucesso!',
-                'data'    => $aluno
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao inativar o aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -186,14 +181,14 @@ class AlunoController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Aluno reativado com sucesso!',
-                'data'    => $aluno
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao reativar o aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -239,7 +234,7 @@ class AlunoController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => 'Atividades encontradas com sucesso',
+                'message' => 'Atividades do aluno',
                 'data'    => $atividades
             ], 200);
         } catch (\Throwable $th) {
@@ -247,7 +242,7 @@ class AlunoController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar os alunos.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -286,8 +281,9 @@ class AlunoController extends BaseController
 
                 // Busca a nota das atividades dessas disciplinas
                 $atividades = AtividadeModel::select('atividade.titulo', 'pontuacao.nota')
-                    ->where('codigo_disciplina', $disciplina['codigo_disciplina'])
                     ->join('pontuacao', 'atividade.codigo_atividade', 'pontuacao.codigo_atividade')
+                    ->where('codigo_disciplina', $disciplina['codigo_disciplina'])
+                    ->where('codigo_aluno', $aluno->codigo_aluno)
                     ->get()->toArray();
 
                 if ($atividades) {
@@ -314,7 +310,7 @@ class AlunoController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as notas do aluno.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 }

@@ -1,0 +1,1104 @@
+{
+	"info": {
+		"_postman_id": "fbb431a7-f22d-4a41-b8d9-57d32143bd29",
+		"name": "Teste Moodle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41740138"
+	},
+	"item": [
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}professores",
+							"host": [
+								"{{base_url}}professores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}professores/e1e94284-60bf-43ed-899d-51e4da38e0fc/show",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"e1e94284-60bf-43ed-899d-51e4da38e0fc",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Professor 3\",\n    \"email\": \"professor@3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}professores/store",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Professor 3\",\n    \"email\": \"professor@3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}professores/e1e94284-60bf-43ed-899d-51e4da38e0fc/update",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"e1e94284-60bf-43ed-899d-51e4da38e0fc",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}professores/e1e94284-60bf-43ed-899d-51e4da38e0fc/delete",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"e1e94284-60bf-43ed-899d-51e4da38e0fc",
+								"delete"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Restore",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}professores/e1e94284-60bf-43ed-899d-51e4da38e0fc/restore",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"e1e94284-60bf-43ed-899d-51e4da38e0fc",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disciplinas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}professores/9984c284-cce0-4f1f-9dd1-9274e64e85b6/disciplinas",
+							"host": [
+								"{{base_url}}professores"
+							],
+							"path": [
+								"9984c284-cce0-4f1f-9dd1-9274e64e85b6",
+								"disciplinas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alunos",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}alunos",
+							"host": [
+								"{{base_url}}alunos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}alunos/fe4fa04e-225d-480b-b033-2fe7b49ba7b9/show",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"fe4fa04e-225d-480b-b033-2fe7b49ba7b9",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atividades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}alunos/90378c20-84d8-4682-8566-5f451b54d312/atividades",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"90378c20-84d8-4682-8566-5f451b54d312",
+								"atividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"ALuno 3\",\n    \"email\": \"aluno@3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}alunos/store",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}alunos/fe4fa04e-225d-480b-b033-2fe7b49ba7b9/delete",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"fe4fa04e-225d-480b-b033-2fe7b49ba7b9",
+								"delete"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Restore",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}alunos/fe4fa04e-225d-480b-b033-2fe7b49ba7b9/restore",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"fe4fa04e-225d-480b-b033-2fe7b49ba7b9",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Aluno 1\",\n    \"email\": \"aluno@1.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}alunos/fe4fa04e-225d-480b-b033-2fe7b49ba7b9/update",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"fe4fa04e-225d-480b-b033-2fe7b49ba7b9",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Notas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}alunos/90378c20-84d8-4682-8566-5f451b54d312/notas",
+							"host": [
+								"{{base_url}}alunos"
+							],
+							"path": [
+								"90378c20-84d8-4682-8566-5f451b54d312",
+								"notas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matricula",
+			"item": [
+				{
+					"name": "Matricular",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuid_aluno\": \"fe4fa04e-225d-480b-b033-2fe7b49ba7b9\",\n    \"uuid_disciplina\": \"0631dd2b-f077-4e0e-8392-3664c28bc3aa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}matriculas/store",
+							"host": [
+								"{{base_url}}matriculas"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Desmatricular",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}matriculas/0b1495fb-cba6-4463-b749-56f19fc5f485/delete",
+							"host": [
+								"{{base_url}}matriculas"
+							],
+							"path": [
+								"0b1495fb-cba6-4463-b749-56f19fc5f485",
+								"delete"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Reativar matricula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}matriculas/0b1495fb-cba6-4463-b749-56f19fc5f485/restore",
+							"host": [
+								"{{base_url}}matriculas"
+							],
+							"path": [
+								"0b1495fb-cba6-4463-b749-56f19fc5f485",
+								"restore"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disciplinas",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas",
+							"host": [
+								"{{base_url}}disciplinas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/show",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Disciplina 6\",\n    \"descricao\": \"Essa é a sexta disciplina criada.\",\n    \"uuid_professor\": \"e1e94284-60bf-43ed-899d-51e4da38e0fc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}disciplinas/store",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Disciplina 1\",\n    \"descricao\": \"Essa é a primeira disciplina criada.\",\n    \"uuid_professor\": \"9984c284-cce0-4f1f-9dd1-9274e64e85b6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/update",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/delete",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"delete"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Restore",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/restore",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atividades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/atividades",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"atividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Médias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/medias",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"medias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ranking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}disciplinas/e68464fd-817e-43ca-b9de-d5d0f30cd612/ranking",
+							"host": [
+								"{{base_url}}disciplinas"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"ranking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atividades",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}atividades",
+							"host": [
+								"{{base_url}}atividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}atividades/e68464fd-817e-43ca-b9de-d5d0f30cd612/show",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"e68464fd-817e-43ca-b9de-d5d0f30cd612",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Atvidade 3\",\n    \"descricao\": \"Essa é a terceira atividade criada.\",\n    \"uuid_disciplina\": \"e68464fd-817e-43ca-b9de-d5d0f30cd612\",\n    \"pontuacao_maxima\": \"20.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}atividades/store",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"store"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "AvaliarAluno",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uuid_atividade\": \"e1d11f3d-6285-4a24-b6b7-bf7737b29d7b\",\n    \"uuid_aluno\": \"90378c20-84d8-4682-8566-5f451b54d312\",\n    \"nota\": \"8.30\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}atividades/avaliar-aluno",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"avaliar-aluno"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Atvidade 1\",\n    \"descricao\": \"Essa é a primeira atividade criada.\",\n    \"uuid_disciplina\": \"e68464fd-817e-43ca-b9de-d5d0f30cd612\",\n    \"pontuacao_maxima\": \"10.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}atividades/73f11e92-3dd0-46cc-b3d6-caf9de326a1a/update",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"73f11e92-3dd0-46cc-b3d6-caf9de326a1a",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}atividades/73f11e92-3dd0-46cc-b3d6-caf9de326a1a/delete",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"73f11e92-3dd0-46cc-b3d6-caf9de326a1a",
+								"delete"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Restore",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}atividades/73f11e92-3dd0-46cc-b3d6-caf9de326a1a/restore",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"73f11e92-3dd0-46cc-b3d6-caf9de326a1a",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}atividades/73f11e92-3dd0-46cc-b3d6-caf9de326a1a/finalizar",
+							"host": [
+								"{{base_url}}atividades"
+							],
+							"path": [
+								"73f11e92-3dd0-46cc-b3d6-caf9de326a1a",
+								"finalizar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8000/api/",
+			"type": "default"
+		}
+	]
+}

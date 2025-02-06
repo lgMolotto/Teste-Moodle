@@ -74,16 +74,12 @@ class MatriculaController extends BaseController
                 ]
             );
 
-            if (!$matricula) {
-                throw new Exception();
-            }
-
             DB::commit();
 
             return response()->json([
                 'success' => true,
                 'message' => 'Aluno matriculado com sucesso!',
-                'data'    => $aluno
+                'data'    => $matricula
             ], 201);
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -92,7 +88,7 @@ class MatriculaController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao matricular o aluno na disciplina.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -121,7 +117,7 @@ class MatriculaController extends BaseController
                 'success' => true,
                 'message' => 'Matricula inativada com sucesso!',
                 'data'    => ''
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -129,7 +125,7 @@ class MatriculaController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao inativar a matricula.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -159,7 +155,7 @@ class MatriculaController extends BaseController
                 'success' => true,
                 'message' => 'Matricula reativada com sucesso!',
                 'data'    => ''
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -167,7 +163,7 @@ class MatriculaController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao reativar a matricula.',
                 'errors'  => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 }

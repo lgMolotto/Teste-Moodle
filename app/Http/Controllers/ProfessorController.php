@@ -19,7 +19,7 @@ class ProfessorController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Lista de professores',
                 'data' => $professores
             ], 200);
         } catch (\Throwable $th) {
@@ -27,7 +27,7 @@ class ProfessorController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar os professores.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -49,15 +49,15 @@ class ProfessorController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Dados do professor',
                 'data'    => $professor
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar o professor.',
-                'errors' => $th->getMessage()
-            ], 400);
+                'errors'  => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -69,16 +69,12 @@ class ProfessorController extends BaseController
 
             $professor = ProfessorModel::create($request->validated());
 
-            if (!$professor) {
-                throw new Exception();
-            }
-
             DB::commit();
 
             return response()->json([
                 'success' => true,
                 'message' => 'Professor cadastrado com sucesso!',
-                'data' => $professor
+                'data'    => $professor
             ], 201);
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -87,7 +83,7 @@ class ProfessorController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao cadastrar o professor.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -114,14 +110,14 @@ class ProfessorController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Professor editado com sucesso!',
-                'data' => $professor
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao editar o professor.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -148,14 +144,14 @@ class ProfessorController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Professor inativado com sucesso!',
-                'data' => $professor
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao inativar o professor.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -183,14 +179,14 @@ class ProfessorController extends BaseController
             return response()->json([
                 'success' => true,
                 'message' => 'Professor reativado com sucesso!',
-                'data' => $professor
-            ], 201);
+                'data'    => ''
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => 'Ocorreu um erro ao reativar o professor.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 
@@ -214,7 +210,7 @@ class ProfessorController extends BaseController
 
             return response()->json([
                 'success' => true,
-                'message' => '',
+                'message' => 'Disciplinas do professor',
                 'data'    => $disciplinas
             ], 200);
         } catch (\Throwable $th) {
@@ -222,7 +218,7 @@ class ProfessorController extends BaseController
                 'success' => false,
                 'message' => 'Ocorreu um erro ao buscar as disciplinas do professor.',
                 'errors' => $th->getMessage()
-            ], 400);
+            ], 500);
         }
     }
 }
