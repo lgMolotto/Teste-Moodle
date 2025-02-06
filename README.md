@@ -73,20 +73,20 @@ A API utiliza os seguintes códigos HTTP para indicar o status das operações:
 
 **Resposta:**
 
-````json
+```json
 {
     "success": true,
     "message": "Lista de professores",
     "data": { ... }
 }
-```![Descrição da Imagem](caminho/para/imagem.png)
+```
 
 ```json
 {
     "nome": "João das Pedras",
     "email": "joaodaspedras@email.com"
 }
-````
+```
 
 **Resposta:**
 
