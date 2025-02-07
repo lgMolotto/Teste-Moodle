@@ -1,7 +1,7 @@
 # 📌 Teste Moodle
 
 **Descrição:**
-Este projeto é uma API desenvolvida em Laravel com as seguintes funcionaliades: Gerenciamento de professores, alunos, disciplinas e atividades, registro e cálculo de notas e acompanhamento de desempenho dos alunos.
+Este projeto é uma API desenvolvida em Laravel com as seguintes funcionalidades: Gerenciamento de professores, alunos, disciplinas e atividades, registro e cálculo de notas e acompanhamento de desempenho dos alunos.
 
 ## 🚀 Tecnologias Utilizadas
 
